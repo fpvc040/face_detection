@@ -5,6 +5,8 @@ It has been tested on a Mac M1 using CPU and utilizes multi-processing for faste
 
 The script employs `ffmpeg-python` for efficient frame extraction while preserving audio from the original clip.
 
+The script also uses multi-processing using Pool.map() to speed up the inference. I've included visual progress bars for each process to track progress. 
+
 ## Requirements
 
 The script has two main dependencies: `DeepFace` and `ffmpeg`. The required dependencies are listed in `requirements.txt`.
