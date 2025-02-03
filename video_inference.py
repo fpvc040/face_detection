@@ -74,8 +74,10 @@ def extract_clips(video_path, grouped_clips, frame_rate):
     for i, clip in enumerate(grouped_clips):
         start_time, end_time = clip[0]["frame"] / frame_rate, clip[-1]["frame"] / frame_rate
         output_filename = f"clip_{i+1}.mp4"
-
-        ffmpeg.input(video_path, ss=start_time, to=end_time).output(output_filename, c="copy").run()
+        try:
+            ffmpeg.input(video_path, ss=start_time, to=end_time).output(output_filename, c="copy").run()
+        except:
+            print("Video extraction error for clip. Video clip is most likely too small: ", output_filename)
 
         metadata.append({
             "filename": output_filename,
