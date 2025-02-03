@@ -38,18 +38,28 @@ pip install opencv-python ffmpeg-python torch tqdm deepface
 
 ## Usage
 ```sh
-python script.py <video_path> <reference_image_path> [--interval N]
+python video_inference.py --video <video_path> --reference <reference_image_path> [--interval N] [--speed] [--num_processes P]
 ```
 
 ### **Arguments**
 | Argument | Description |
 |----------|-------------|
-| `video_path` | Path to the input video file. |
-| `reference_image_path` | Path to the reference image of the face to track. |
+| `--video` | Path to the input video file. (Required) |
+| `--reference` | Path to the reference image of the face to track. (Required) |
 | `--interval N` (optional) | Process every Nth frame (default: 1). Higher values improve speed but may reduce accuracy. |
+| `--speed` (optional) | Use a VGG model for faster processing instead of RetinaFace for higher accuracy. |
+| `--num_processes P` (optional) | Number of processes to use for multiprocessing (default: 4). |
 
 ## Output
 - Extracted video clips (`clip_1.mp4`, `clip_2.mp4`, etc.)
 - `metadata.json` containing timestamps and bounding boxes of detected faces.
 
-The outputs are stored in the `results` folder. Additionally, a drive link with processed videos is available.
+The outputs are stored in the `Results` folder. Additionally, a drive link with processed videos is available.
+[Drive folder link with a preview in Home Directory](https://drive.google.com/drive/folders/1223QfyY7tHeG3OsyHDNQfKf4lDLKR7ib?usp=sharing)
+
+## Assumptions:
+- This assumes that ideally, each frame is analyzed. If the frames are skipped( Eg: Every 5 frames), then the video creation can be problematic. 
+- The face should be visible enough in the video such that the features are visible in most of the scene. If the face features are miniscule, then the face embeddings will not be picked up. This should work well for mose video types (professional shoot or webcam)
+- The model can be set up to run batch image inference using the model weights and pytorch/TF directly in addition;this project optimizes inference using multiprocessing. 
+
+
