@@ -7,7 +7,7 @@ The script employs `ffmpeg-python` for efficient frame extraction while preservi
 
 The script also uses `multi-processing` using Pool.map() to speed up the inference. I've included visual progress bars for each process to track progress. 
 
-<img width="684" alt="image" src="https://github.com/user-attachments/assets/4a201417-0f4b-4972-a4d0-0d1aa32f34f3" />
+<img width="500" alt="image" src="https://github.com/user-attachments/assets/4a201417-0f4b-4972-a4d0-0d1aa32f34f3" />
 
 
 ## Requirements
