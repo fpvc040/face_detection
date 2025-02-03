@@ -50,7 +50,7 @@ python video_inference.py --video <video_path> --reference <reference_image_path
 | `--video` | Path to the input video file. (Required) |
 | `--reference` | Path to the reference image of the face to track. (Required) |
 | `--interval N` (optional) | Process every Nth frame (default: 1). Higher values improve speed but may reduce accuracy. |
-| `--speed` (optional) | Use a VGG model for faster processing instead of RetinaFace for higher accuracy. |
+| `--speed` (optional) | Use a VGG model for faster processing instead of RetinaFace (default) for higher accuracy. |
 | `--num_processes P` (optional) | Number of processes to use for multiprocessing (default: 4). |
 
 ## Output
