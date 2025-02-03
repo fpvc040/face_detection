@@ -3,9 +3,11 @@
 This Python script processes a video and a reference image to extract clips (with audio) where the specified person is detected. 
 It has been tested on a Mac M1 using CPU and utilizes multi-processing for faster face detection.
 
-The script employs `ffmpeg-python` for efficient frame extraction while preserving audio from the original clip.
+The script employs `ffmpeg-python` for efficient frame extraction while preserving audio from the original clip. It successfully extracts the clips with audio in seconds.
 
 The script also uses `multi-processing` using Pool.map() to speed up the inference. I've included visual progress bars for each process to track progress. 
+<img width="306" alt="image" src="https://github.com/user-attachments/assets/cdffe5ca-5b3a-4aa0-a544-813a5854dd4a" />
+
 
 ## Requirements
 
