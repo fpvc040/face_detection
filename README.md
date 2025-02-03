@@ -13,9 +13,10 @@ The script has two main dependencies: `DeepFace` and `ffmpeg`. The required depe
 
 ### **Recommended System:**
 - Linux/Mac (Unix)
-- Windows (additional setup required for FFmpeg)
 
 #### **Windows Users:**
+Windows (additional setup required for FFmpeg)
+
 If running on Windows, you must install the FFmpeg executable separately. Download it from the link below and ensure it is added to your system PATH:
 [FFmpeg Builds](https://github.com/BtbN/FFmpeg-Builds/releases#:~:text=ffmpeg%2Dmaster%2Dlatest%2Dwin64%2Dgpl%2Dshared.zip)
 
