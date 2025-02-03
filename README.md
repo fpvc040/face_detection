@@ -1,46 +1,55 @@
 # Face Detection and Video Clipping
-This python script takes in a video and a reference image, and extracts (With audio) clips of the person detected. 
-Tested on a Mac M1 using CPU
 
-The script utilizes multi-processing to speed up the face detection algorith. 
-The script also utilizes ffmpeg-python to extract video frames in a quick, consistent matter. The script also copies over the audio from the original clip.
+This Python script processes a video and a reference image to extract clips (with audio) where the specified person is detected. 
+It has been tested on a Mac M1 using CPU and utilizes multi-processing for faster face detection.
 
+The script employs `ffmpeg-python` for efficient frame extraction while preserving audio from the original clip.
 
+## Requirements
 
- ## Requirements
-The python script has 2 main dependencies: DeepFace and ffmpeg. The requirement files is attached to the document.
+The script has two main dependencies: `DeepFace` and `ffmpeg`. The required dependencies are listed in `requirements.txt`.
 
-Recommended system: Linux/Mac (Unix)
+### **Recommended System:**
+- Linux/Mac (Unix)
+- Windows (additional setup required for FFmpeg)
 
-If running on windows, the application requires an additional step to install ffmpeg executable. It can be downloaded from the following link. Make sure it is added to system path.
-https://github.com/BtbN/FFmpeg-Builds/releases#:~:text=ffmpeg%2Dmaster%2Dlatest%2Dwin64%2Dgpl%2Dshared.zip
+#### **Windows Users:**
+If running on Windows, you must install the FFmpeg executable separately. Download it from the link below and ensure it is added to your system PATH:
+[FFmpeg Builds](https://github.com/BtbN/FFmpeg-Builds/releases#:~:text=ffmpeg%2Dmaster%2Dlatest%2Dwin64%2Dgpl%2Dshared.zip)
 
-## Installation steps: 
+## Installation
 
-If you want to use conda to set up an environment (Optional):
-' conda create -n <name> '
-' conda activate <name>'
+### **Optional: Set Up a Conda Environment**
+```sh
+conda create -n <env_name>
+conda activate <env_name>
+```
 
-Then, install the packages using:
-'pip install -r requirements.txt'
+### **Install Dependencies**
+Using `requirements.txt`:
+```sh
+pip install -r requirements.txt
+```
 
-That's it! You should be done with the install steps. 
+Without `requirements.txt`:
+```sh
+pip install opencv-python ffmpeg-python torch tqdm deepface
+```
 
-If you don't want to use the requirements.txt file, you can install with the following line:
-' pip install opencv-python ffmpeg-python torch tqdm deepface' 
+## Usage
+```sh
+python script.py <video_path> <reference_image_path> [--interval N]
+```
 
-## Usage:
-' python script.py <video_path> <reference_image_path> [--interval N] ' 
-
-Argument	Description
-video_path	Path to the input video file.
-reference_image_path	Path to the reference image of the face to track.
---interval N (optional)	Process every Nth frame (default: 1). Higher values improve speed but may reduce accuracy.
+### **Arguments**
+| Argument | Description |
+|----------|-------------|
+| `video_path` | Path to the input video file. |
+| `reference_image_path` | Path to the reference image of the face to track. |
+| `--interval N` (optional) | Process every Nth frame (default: 1). Higher values improve speed but may reduce accuracy. |
 
 ## Output
-The outputs are in the result folder in this repo, but below is a drive link with the video as well. 
+- Extracted video clips (`clip_1.mp4`, `clip_2.mp4`, etc.)
+- `metadata.json` containing timestamps and bounding boxes of detected faces.
 
-
-
-
-
+The outputs are stored in the `results` folder. Additionally, a drive link with processed videos is available.
