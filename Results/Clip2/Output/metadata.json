@@ -1836,7 +1836,7 @@
     {
         "filename": "clip_2.mp4",
         "start_time": 28.1,
-        "end_time": 28.2,
+        "end_time": 29.833333333333332,
         "bounding_boxes": [
             {
                 "frame": 843,
@@ -1865,14 +1865,7 @@
                 "y": 125,
                 "width": 125,
                 "height": 150
-            }
-        ]
-    },
-    {
-        "filename": "clip_3.mp4",
-        "start_time": 28.266666666666666,
-        "end_time": 28.3,
-        "bounding_boxes": [
+            },
             {
                 "frame": 848,
                 "x": 381,
@@ -1886,14 +1879,7 @@
                 "y": 125,
                 "width": 124,
                 "height": 147
-            }
-        ]
-    },
-    {
-        "filename": "clip_4.mp4",
-        "start_time": 28.366666666666667,
-        "end_time": 29.0,
-        "bounding_boxes": [
+            },
             {
                 "frame": 851,
                 "x": 382,
@@ -2033,14 +2019,7 @@
                 "y": 104,
                 "width": 120,
                 "height": 150
-            }
-        ]
-    },
-    {
-        "filename": "clip_5.mp4",
-        "start_time": 29.066666666666666,
-        "end_time": 29.833333333333332,
-        "bounding_boxes": [
+            },
             {
                 "frame": 872,
                 "x": 391,
@@ -2212,7 +2191,7 @@
         ]
     },
     {
-        "filename": "clip_6.mp4",
+        "filename": "clip_3.mp4",
         "start_time": 30.6,
         "end_time": 33.333333333333336,
         "bounding_boxes": [
@@ -2800,7 +2779,7 @@
         ]
     },
     {
-        "filename": "clip_7.mp4",
+        "filename": "clip_4.mp4",
         "start_time": 34.9,
         "end_time": 35.86666666666667,
         "bounding_boxes": [
@@ -3017,7 +2996,7 @@
         ]
     },
     {
-        "filename": "clip_8.mp4",
+        "filename": "clip_5.mp4",
         "start_time": 41.733333333333334,
         "end_time": 42.86666666666667,
         "bounding_boxes": [
