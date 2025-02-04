@@ -7,6 +7,7 @@ The script employs `ffmpeg-python` for efficient frame extraction while preservi
 
 The script also uses `multi-processing` using Pool.map() to speed up the inference. I've included visual progress bars for each process to track progress. 
 
+The script also merges clips that have less than 0.5 seconds of difference in start/end times. This results in ** Significantly better ** video reconstructions. We still maintain frame metadata, so the gaps in target detection in those small gaps are still maintained.
 
 ## Requirements
 
@@ -65,5 +66,6 @@ The outputs are stored in the `Results` folder. Additionally, a drive link with 
 - This assumes that ideally, each frame is analyzed. If the frames are skipped( Eg: Every 5 frames), then the video creation can be problematic. 
 - The face should be visible enough in the video such that the features are visible in most of the scene. If the face features are miniscule, then the face embeddings will not be picked up. This should work well for mose video types (professional shoot or webcam)
 - The model can be set up to run batch image inference using the model weights and pytorch/TF directly in addition;this project optimizes inference using multiprocessing. 
+- The threshold for target drop is set to 0.5 seconds. This strategy is used to account for motion blur and partial occlusions from fast objects moving in front of the face target.
 
 

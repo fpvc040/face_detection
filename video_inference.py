@@ -68,23 +68,52 @@ def process_frames(frame_indices, video_path, reference_image_path, speed):
     video.release()
     return results
 
+def merge_fractional_clips(clips, threshold=0.5):
+    """
+    Cleans up small gaps due to character motion or miniscule occlusions by merging videos with less than 0.5 seconds gaps.
+    """
+    clips.sort(key=lambda x: x["start_time"])
+
+    merged_clips = []
+    current_clip = clips[0]
+
+    for i in range(1, len(clips)):
+        next_clip = clips[i]
+
+        if next_clip["start_time"] - current_clip["end_time"] <= threshold:
+            current_clip["end_time"] = max(current_clip["end_time"], next_clip["end_time"])
+            current_clip["bounding_boxes"].extend(next_clip["bounding_boxes"])
+        else:
+            merged_clips.append(current_clip)
+            current_clip = next_clip
+
+    merged_clips.append(current_clip)
+
+    for idx, clip in enumerate(merged_clips, start=1):
+        clip["filename"] = f"clip_{idx}.mp4"
+
+    return merged_clips
+
 def extract_clips(video_path, grouped_clips, frame_rate):
     """Extracts video clips where the target face is detected and saves metadata."""
     metadata = []
     for i, clip in enumerate(grouped_clips):
         start_time, end_time = clip[0]["frame"] / frame_rate, clip[-1]["frame"] / frame_rate
         output_filename = f"clip_{i+1}.mp4"
-        try:
-            ffmpeg.input(video_path, ss=start_time, to=end_time).output(output_filename, c="copy").run()
-        except:
-            print("Video extraction error for clip. Video clip is most likely too small: ", output_filename)
-
         metadata.append({
             "filename": output_filename,
             "start_time": start_time,
             "end_time": end_time,
             "bounding_boxes": clip
         })
+    metadata = merge_fractional_clips(metadata)
+
+    for video in metadata:
+        try:
+            ffmpeg.input(video["filename"], ss=video["start_time"], to=video["end_time"]).output(output_filename, c="copy").run()
+        except:
+            print("Video extraction error for clip. Video clip is most likely too small: ", output_filename)
+
     
     with open("metadata.json", "w") as f:
         json.dump(metadata, f, indent=4)
