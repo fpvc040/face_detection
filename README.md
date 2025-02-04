@@ -46,6 +46,11 @@ pip install opencv-python ffmpeg-python torch tqdm deepface
 python video_inference.py --video <video_path> --reference <reference_image_path> [--interval N] [--speed] [--num_processes P]
 ```
 
+## Example
+```sh
+python video_inference.py --video Results/Clip\ 1/test1.mp4  --reference Results/Clip\ 1/reference.png --num_processes 6
+```
+
 ### **Arguments**
 | Argument | Description |
 |----------|-------------|

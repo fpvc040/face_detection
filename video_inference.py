@@ -110,7 +110,7 @@ def extract_clips(video_path, grouped_clips, frame_rate):
 
     for video in metadata:
         try:
-            ffmpeg.input(video["filename"], ss=video["start_time"], to=video["end_time"]).output(output_filename, c="copy").run()
+            ffmpeg.input(video_path, ss=video["start_time"], to=video["end_time"]).output(video["filename"], c="copy").run()
         except:
             print("Video extraction error for clip. Video clip is most likely too small: ", output_filename)
 
